@@ -88,28 +88,28 @@
                         document.getElementById("root"));
         ```
 
-    * Lifting State Up/Controlled components
+* **Lifting State Up/Controlled components**
 
-        See: [Lifting State Up](https://facebook.github.io/react/tutorial/tutorial.html#lifting-state-up)
+    See: [Lifting State Up](https://facebook.github.io/react/tutorial/tutorial.html#lifting-state-up)
 
-        When you want to aggregate data from multiple children or to have two child components communicate with each other, move the state upwards so that it lives in the parent component. The parent can then pass the state back down to the children via props, so that the child components are always in sync with each other and with the parent.
+    When you want to aggregate data from multiple children or to have two child components communicate with each other, move the state upwards so that it lives in the parent component. The parent can then pass the state back down to the children via props, so that the child components are always in sync with each other and with the parent.
 
-        Pass down functions from parent to child so that child components can communicate/update parent state by calling those functions.
+    Pass down functions from parent to child so that child components can communicate/update parent state by calling those functions.
 
-    * Why immutability is important
+* **Why immutability is important**
 
-        See: [Why immutability is important](https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important) (Hint: Performance)
+    See: [Why immutability is important](https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important) (Hint: Performance)
 
-    * Keys
+* **Keys**
 
-        See: [Keys](https://facebook.github.io/react/tutorial/tutorial.html#keys)
+    See: [Keys](https://facebook.github.io/react/tutorial/tutorial.html#keys)
 
-        ```javascript
+    ```javascript
         <li key={user.id}>{user.name}: {user.taskCount} tasks left</li>
-        ```
+    ```
 
-        `key` is a special property that's reserved by React (along with `ref`, a more advanced feature). When an element is created, React pulls off the key property and stores the key directly on the returned element. Even though it may look like it is part of props, it cannot be referenced with `this.props.key`. React uses the key automatically while deciding which children to update; there is no way for a component to inquire about its own key.
+    `key` is a special property that's reserved by React (along with `ref`, a more advanced feature). When an element is created, React pulls off the key property and stores the key directly on the returned element. Even though it may look like it is part of props, it cannot be referenced with `this.props.key`. React uses the key automatically while deciding which children to update; there is no way for a component to inquire about its own key.
 
-        When a list is rerendered, React takes each element in the new version and looks for one with a matching key in the previous list. When a key is added to the set, a component is created; when a key is removed, a component is destroyed. Keys tell React about the identity of each component, so that it can maintain the state across rerenders. If you change the key of a component, it will be completely destroyed and recreated with a new state.
+    When a list is rerendered, React takes each element in the new version and looks for one with a matching key in the previous list. When a key is added to the set, a component is created; when a key is removed, a component is destroyed. Keys tell React about the identity of each component, so that it can maintain the state across rerenders. If you change the key of a component, it will be completely destroyed and recreated with a new state.
 
-        **It's strongly recommended that you assign proper keys whenever you build dynamic lists.** If you don't have an appropriate key handy, you may want to consider restructuring your data so that you do.
+    **It's strongly recommended that you assign proper keys whenever you build dynamic lists.** If you don't have an appropriate key handy, you may want to consider restructuring your data so that you do.
