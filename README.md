@@ -45,12 +45,25 @@
 
 * **Components**
 
-    A component takes in parameters, called `props`, and returns a hierarchy of views to display via the `render` method.
-    Components must implement the `render()` method.
-    
-    The `render` method returns a description of what you want to render, and then React takes that description and renders it to the screen. In particular, `render` returns a **React element**, which is a lightweight description of what to render. 
+    Components are the building blocks of UI. Components split the UI into reusable pieces.
 
+    A component takes in parameters, called `props`, and returns a hierarchy of views to display.
+
+    Components can be implemented as a function, or as ES6 classs. Class-based components must implement the `render()` method. The `render()` method returns a description of what you want to render, and then React takes that description and renders it to the screen. In particular, `render()` returns a **React element**, which is a lightweight description of what to render. 
+
+    * **Always start component names with a capital letter.**
+
+    * Components must return a **single root** element.
+
+    * Props are read-only. A component must not modify the props that are passed to it.
     ```javascript
+    function HelloWorld(props) {
+        return (
+            <div className="hello">Hello, World!</div>
+        );
+    }
+
+    //OR 
 
     class HelloWorld extends React.Component {
         render() {
@@ -85,13 +98,14 @@
         ```
     * **State**
     
-        React components can have state. 
-        
-        State is considered internal/private. 
-        
-        State is a JavaScript object.
+        React components can have state. State is like props, but is internal/private and can be changed. State is a JavaScript object.
+
+        **Only class-based components can have state.**
 
         Whenever `this.setState` is called, an update to the component is scheduled, causing React to merge in the passed state update and rerender the component along with its descendants.
+
+        **If you don't use something in render(), it shouldn't be in the state.**
+
 
         Notice the `onClick` handler. Arrow function is used to pass current scope `('this')` to the function.
 
@@ -125,6 +139,19 @@
                         document.getElementById("root"));
         ```
 
+    * **Do not modify state directly, use `setState()`.**
+    * [**State updates may be asynchronous**](https://facebook.github.io/react/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous)
+    * **[State updates are merged](https://facebook.github.io/react/docs/state-and-lifecycle.html#state-updates-are-merged). As state is a JS Object, different fields of the object can be updated individually without affecting the other.**
+    * Lifecycle methods
+
+        ```javascript
+            componentDidMount(){
+                //setup something when the component is rendered in the DOM for the first time.
+            }
+            componentWillUnmount(){
+                //clear up when the component is removed from the DOM
+            }
+        ```
 * **Lifting State Up/Controlled components**
 
     See: [Lifting State Up](https://facebook.github.io/react/tutorial/tutorial.html#lifting-state-up)
