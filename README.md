@@ -4,7 +4,44 @@
 
 * **JSX**
 
-    JavaScript with XML
+    JSX produces React **elements**.
+
+
+    ```javascript
+    function add(a, b){
+        return a + b;
+    }
+
+    const calc = (
+        <span>{add(1,2)}</span> //JSX
+    );
+
+    ReactDOM.render(
+        calc,
+        document.getElementById("root")
+    );
+    ```
+    After compilation, JSX expressions become regular JavaScript objects.
+
+* **Elements**
+
+    Applications built with React usually have a root DOM node. 
+    
+
+    ```HTML
+    <div id="root"></div>
+    ```
+
+    To render a React element into a root DOM node, pass it to `ReactDOM.render()`.
+
+    ```javascript
+    const element = <h1>Hello, world!</h1>
+    ReactDOM.render(element, document.getElementById('root'));
+    ```
+
+    React elements are immutable. Once you create an element, you can't change its children or attributes. The only way to update the UI is to create a new element.
+    **React DOM compares the new element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.**
+
 
 * **Components**
 
